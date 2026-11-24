@@ -1,6 +1,6 @@
 // ============================================================
 // L01 — Dart พื้นฐาน (ITE-439 สัปดาห์ที่ 1)
-// ชื่อ-สกุล: ______________________  รหัสนักศึกษา: ____________
+// ชื่อ-สกุล: นายปริวัฒน์ ร่มพันธ์  รหัสนักศึกษา: 2413110632
 // ============================================================
 //
 // วิธีทำ
@@ -44,8 +44,8 @@ void main() {
 // ใบ้: ตัวเลขทศนิยมใช้ double, ตัดทศนิยมใช้ .toStringAsFixed(2)
 // ------------------------------------------------------------
 String bmi(double weight, double height) {
-  // TODO: เขียนโค้ดตรงนี้
-  return '';
+  final result = weight / (height * height);
+  return result.toStringAsFixed(2);
 }
 
 // ------------------------------------------------------------
@@ -59,18 +59,17 @@ String bmi(double weight, double height) {
 //      เช่น list.reduce((a, b) => a > b ? a : b)
 // ------------------------------------------------------------
 String average(List<int> numbers) {
-  // TODO
-  return '';
+  if (numbers.isEmpty) return '0.00';
+  final sum = numbers.reduce((a, b) => a + b);
+  return (sum / numbers.length).toStringAsFixed(2);
 }
 
 int highest(List<int> numbers) {
-  // TODO
-  return 0;
+  return numbers.reduce((a, b) => a > b ? a : b);
 }
 
 int lowest(List<int> numbers) {
-  // TODO
-  return 0;
+  return numbers.reduce((a, b) => a < b ? a : b);
 }
 
 // ------------------------------------------------------------
@@ -91,8 +90,10 @@ const List<Map<String, dynamic>> students = [
 ];
 
 List<String> topStudentNames(List<Map<String, dynamic>> list) {
-  // TODO
-  return [];
+  return list
+      .where((s) => (s['score'] as int) >= 80)
+      .map((s) => s['name'] as String)
+      .toList();
 }
 
 // ------------------------------------------------------------
